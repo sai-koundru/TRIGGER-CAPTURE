@@ -1,4 +1,5 @@
-module triggering(
+module trigger_capture
+    (
     input clk,
     input trig,
     input [7:0] din,
@@ -6,55 +7,34 @@ module triggering(
     output reg crfm    //confirm
 );
 
+    
     always @(posedge clk) 
     begin
         if (trig) 
         
         begin
             dout <= din;
-            //crfm <= 1;
         end
         
         else
-        begin
-        dout<=0;
-        end
+            begin
+                dout<=0;
+            end
   end     
   
-  
-
-  
   always @(*)
-begin
+    begin
 
-if (dout==din)
-begin
-crfm<=1;
-end
+        if (dout==din)
+            begin
+                crfm<=1;
+            end
 
-else
-begin
-crfm<=0;
-end
+        else
+            begin
+                crfm<=0;
+            end
 
-end 
+    end 
 
 endmodule
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
